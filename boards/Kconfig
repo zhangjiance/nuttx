@@ -2251,6 +2251,14 @@ config ARCH_BOARD_RASPBERRYPI_PICO_2
 	---help---
 		This is a port to the Raspberry Pi Pico 2 board.
 
+config ARCH_BOARD_ALIENTEK_DNRP2350AM
+	bool "Alientek DNRP2350AM"
+	depends on ARCH_CHIP_RP23XX
+	select ARCH_HAVE_LEDS
+	select ARCH_HAVE_BUTTONS
+	select ARCH_HAVE_IRQBUTTONS
+	---help---
+		This is a port to the Alientek DNRP2350AM board.
 config ARCH_BOARD_RASPBERRYPI_PICO_2_RV
 	bool "Raspberry Pi Pico 2 board RISC-V (not Pico, not W)"
 	depends on ARCH_CHIP_RP23XX_RV
@@ -3624,6 +3632,10 @@ config ARCH_BOARD_S698PM_DKIT
 config ARCH_BOARD_HPM6360EVK
 	bool "Hpmicro hpm6360evk"
 	depends on ARCH_CHIP_HPM6360IPA
+
+config ARCH_BOARD_HPM5300EVK
+	bool "Hpmicro hpm5300evk"
+	depends on ARCH_CHIP_HPM5300IPA
 	select ARCH_HAVE_LEDS
 	---help---
 		This is the board configuration for the port of NuttX to the Hpmicro hpm6750evk2
@@ -3967,6 +3979,7 @@ config ARCH_BOARD
 	default "adafruit-qt-py-rp2040"        if ARCH_BOARD_ADAFRUIT_QT_PY_RP2040
 	default "waveshare-rp2040-lcd-1.28"    if ARCH_BOARD_WAVESHARE_RP2040_LCD_1_28
 	default "raspberrypi-pico-2"           if ARCH_BOARD_RASPBERRYPI_PICO_2
+	default "alientek-dnrp2350am"            if ARCH_BOARD_ALIENTEK_DNRP2350AM
 	default "raspberrypi-pico-2-rv"        if ARCH_BOARD_RASPBERRYPI_PICO_2_RV
 	default "xiao-rp2350"                  if ARCH_BOARD_XIAO_RP2350
 	default "pimoroni-pico-2-plus"         if ARCH_BOARD_PIMORONI_PICO_2_PLUS
@@ -4121,6 +4134,7 @@ config ARCH_BOARD
 	default "xx3823"                       if ARCH_BOARD_XX3823
 	default "s698pm-dkit"                  if ARCH_BOARD_S698PM_DKIT
 	default "hpm6360evk"                   if ARCH_BOARD_HPM6360EVK
+	default "hpm5300evk"                   if ARCH_BOARD_HPM5300EVK
 	default "hpm6750evk2"                  if ARCH_BOARD_HPM6750EVK2
 	default "at32f437-mini"                if ARCH_BOARD_AT32F437_MINI
 	default "esk32"                        if ARCH_BOARD_ESK32
@@ -4506,6 +4520,9 @@ source "boards/arm/rp2040/waveshare-rp2040-zero/Kconfig"
 endif
 if ARCH_BOARD_RASPBERRYPI_PICO_2
 source "boards/arm/rp23xx/raspberrypi-pico-2/Kconfig"
+endif
+if ARCH_BOARD_ALIENTEK_DNRP2350AM
+source "boards/arm/rp23xx/alientek-dnrp2350am/Kconfig"
 endif
 if ARCH_BOARD_XIAO_RP2350
 source "boards/arm/rp23xx/xiao-rp2350/Kconfig"
@@ -5280,6 +5297,9 @@ source "boards/arm/tlsr82/tlsr8278adk80d/Kconfig"
 endif
 if ARCH_BOARD_HPM6360EVK
 source "boards/risc-v/hpm6000/hpm6360evk/Kconfig"
+endif
+if ARCH_BOARD_HPM5300EVK
+source "boards/risc-v/hpm5300/hpm5300evk/Kconfig"
 endif
 if ARCH_BOARD_HPM6750EVK2
 source "boards/risc-v/hpm6750/hpm6750evk2/Kconfig"

@@ -1,0 +1,20 @@
+#
+# For a description of the syntax of this configuration file,
+# see misc/tools/kconfig-language.txt.
+#
+
+if ARCH_BOARD_HPM5300EVK
+
+config ARCH_BUTTONS
+	bool "Board has buttons"
+	default y
+
+config ARCH_IRQBUTTONS
+	bool "Board supports button interrupts"
+	default y
+	---help---
+		The board provides the board_button_irq() interface.  Button
+		presses and releases interrupt via the GPIO0 bank A interrupt
+		(HPM_IRQ_GPIO0_A), configured for both edges on PA9.
+
+endif
